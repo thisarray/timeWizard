@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test timeWizard</title>
+  <script src="timeWizard.js"></script>
+  <style type="text/css" media="screen">
+body {
+  background-color: white;
+  color: black;
+}
+  </style>
+</head>
+
+<body>
+
+<main>
+
+<h1>Test timeWizard</h1>
+
+<h2>UTC</h2>
+
+<p><time datetime="2011">2011</time></p>
+
+<p><time datetime="2011-12">December, 2011</time></p>
+
+<p><time datetime="2011-02-03">February 3, 2011</time></p>
+
+<p><time datetime="2011-02-03T04:05">February 3, 2011 at 4:05 AM</time></p>
+
+<p><time datetime="2011-02-03T04:05:06Z">February 3, 2011 at 4:05:06 AM</time></p>
+
+<p><time datetime="2011-02-03T04:05:06.007Z">February 3, 2011 at 4:05:06.007 AM</time></p>
+
+<h3>no T</h3>
+
+<p><time datetime="2011-02-03 04:05:06Z">February 3, 2011 at 4:05:06 AM</time></p>
+
+<p><time datetime="2011-02-03 04:05:06.007Z">February 3, 2011 at 4:05:06.007 AM</time></p>
+
+<h2>Local</h2>
+
+<p><time datetime="2021">2021</time></p>
+
+<p><time datetime="2021-12">December, 2021</time></p>
+
+<p><time datetime="2021-02-03">February 3, 2021</time></p>
+
+<p><time datetime="2021-02-03T04:05:06">February 3, 2021 at 4:05:06 AM</time></p>
+
+<p><time datetime="2021-02-03T04:05:06.007">February 3, 2021 at 4:05:06.007 AM</time></p>
+
+<h3>no T</h3>
+
+<p><time datetime="2021-02-03 04:05:06">February 3, 2021 at 4:05:06 AM</time></p>
+
+<p><time datetime="2021-02-03 04:05:06.007">February 3, 2021 at 4:05:06.007 AM</time></p>
+
+<h2>Yearless</h2>
+
+<p><time datetime="11-18">November 18</time></p>
+
+<h2>Time only</h2>
+
+<p><time datetime="11:12">11:12 AM</time></p>
+
+<p><time datetime="11:12:13">11:12:13 AM</time></p>
+
+<p><time datetime="11:12:13.014">11:12:13.014 AM</time></p>
+
+<h2>Duration</h2>
+
+<p><time datetime="PT4H18M3S">4 hours 18 minutes 3 seconds</time></p>
+
+<h2>Week</h2>
+
+<p><time datetime="2011-W47">Week 47 of 2011</time></p>
+
+</main>
+
+<script>
+window.addEventListener('load', (event) => {
+  timeWizard.main();
+});
+</script>
+</body>
+
+</html>
