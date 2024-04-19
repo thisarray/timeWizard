@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week Start</title>
+  <script src="timeWizard.js"></script>
+  <style type="text/css" media="screen">
+body {
+  background-color: white;
+  color: black;
+}
+  </style>
+</head>
+
+<body>
+
+<main>
+
+<h1>Week Start</h1>
+
+<form id="yearForm" name="yearForm">
+<p><label>Year:
+<input type="number" id="year" name="year" autofocus required min="0" max="9999" step="1">
+</label>
+<button type="submit">Submit</button></p>
+
+<h2>Week Number, Monday</h2>
+
+<output id="mondays" name="mondays" for="yearForm"></output>
+</form>
+
+</main>
+
+<script>
+const FORM = document.querySelector('#yearForm');
+const OUTPUT = document.querySelector('#mondays');
+FORM.addEventListener('submit', (event) => {
+  let year = parseInt(FORM.year.value, 10),
+      i = 1,
+      date = timeWizard.getWeek(year, i),
+      list = document.createElement('ol'),
+      item;
+
+  // Week 1 may start in the previous year
+  while (date.getFullYear() <= year) {
+    item = document.createElement('li');
+    item.appendChild(document.createTextNode(date.toISOString().substring(0, 10)));
+    list.appendChild(item);
+    i++;
+    date = timeWizard.getWeek(year, i);
+  }
+
+  OUTPUT.innerHTML = '';
+  OUTPUT.appendChild(list);
+
+  event.preventDefault();
+});
+</script>
+</body>
+
+</html>
