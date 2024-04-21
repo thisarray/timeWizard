@@ -57,6 +57,10 @@ FORM.addEventListener('submit', (event) => {
 
   event.preventDefault();
 });
+
+window.addEventListener('load', (event) => {
+  FORM.year.value = (new Date()).toISOString().substring(0, 4);
+});
 </script>
 </body>
 
