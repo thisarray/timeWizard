@@ -47,9 +47,9 @@ const timeWizard = (function () {
     },
 
     /*
-     * Process the time tag element.
+     * Parse the datetime attribute of the time tag element.
      */
-    processTag(element) {
+    parseDatetime(element) {
       let value = element.getAttribute('datetime'),
           hyphenCount = timeWizard.count(value, '-'),
           weekIndex = value.indexOf('-W'),
@@ -83,12 +83,15 @@ const timeWizard = (function () {
         date = new Date(value);
       }
 
-      element.textContent += ' (' + date.toISOString() + ')';
+      return date;
     },
 
     main() {
       for (const element of document.querySelectorAll('time')) {
-        timeWizard.processTag(element);
+        let date = timeWizard.parseDatetime(element);
+        if (date instanceof Date) {
+          element.textContent += ' (' + date.toISOString() + ')';
+        }
       }
     }
   }
