@@ -88,9 +88,19 @@ const timeWizard = (function () {
 
     main() {
       for (const element of document.querySelectorAll('time')) {
-        let date = timeWizard.parseDatetime(element);
+        let date = timeWizard.parseDatetime(element),
+            result, title;
         if (date instanceof Date) {
-          element.textContent += ' (' + date.toISOString() + ')';
+          result = date.toISOString();
+
+          // Set the title attribute of the time tag
+          title = element.getAttribute('title');
+          if ((title == null) || (title === '')) {
+            element.setAttribute('title', result);
+          }
+
+          // Append to the text of the time tag
+          element.textContent += ' (' + result + ')';
         }
       }
     }
