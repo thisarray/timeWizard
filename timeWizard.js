@@ -19,6 +19,19 @@ const timeWizard = (function () {
     },
 
     /*
+     * Return the integer number of days between date1 and date2.
+     */
+    getDaysApart(date1, date2) {
+      if (!(date1 instanceof Date)) {
+        throw new TypeError('date1 must be a Date object.');
+      }
+      if (!(date2 instanceof Date)) {
+        date2 = new Date();
+      }
+      return Math.floor((date2.getTime() - date1.getTime()) / ONE_DAY);
+    },
+
+    /*
      * Return the Monday for week weekNumber in year.
      */
     getWeek(year, weekNumber) {
