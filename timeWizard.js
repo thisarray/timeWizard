@@ -118,16 +118,12 @@ const timeWizard = (function () {
       for (let i = 0; i < 29; i++) {
         console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2021, 2, 3 + i)) === i,
                        {msg: 'getDaysApart() failed.'});
+        // month is 0-indexed so this is the number of days between March 3 and April 3
+        console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2021, 3, 3 + i)) === (31 + i),
+                       {msg: 'getDaysApart() failed.'});
+        console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2021, 4, 3 + i)) === (61 + i),
+                       {msg: 'getDaysApart() failed.'});
       }
-      // month is 0-indexed so this is the number of days between March 3 and April 3
-      console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2021, 3, 3)) === 31,
-                     {msg: 'getDaysApart() failed.'});
-      console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2021, 3, 4)) === 32,
-                     {msg: 'getDaysApart() failed.'});
-      console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2021, 4, 3)) === 61,
-                     {msg: 'getDaysApart() failed.'});
-      console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2021, 4, 6)) === 64,
-                     {msg: 'getDaysApart() failed.'});
       console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2022, 2, 3)) === 365,
                      {msg: 'getDaysApart() failed.'});
 
