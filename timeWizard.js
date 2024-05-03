@@ -134,6 +134,55 @@ const timeWizard = (function () {
       console.assert(timeWizard.getDaysApart(new Date(2021, 2, 3), new Date(2022, 2, 3)) === 365,
                      {msg: 'getDaysApart() failed.'});
 
+      console.assert(timeWizard.getDescription(0) === 'today',
+                     {msg: 'getDescription() failed.'});
+      console.assert(timeWizard.getDescription(-1) === '1 day',
+                     {msg: 'getDescription() failed.'});
+      console.assert(timeWizard.getDescription(1) === '1 day',
+                     {msg: 'getDescription() failed.'});
+      for (let i = 2; i < 7; i++) {
+        console.assert(timeWizard.getDescription(i) === i + ' days',
+                       {msg: 'getDescription() failed.'});
+        console.assert(timeWizard.getDescription(-i) === i + ' days',
+                       {msg: 'getDescription() failed.'});
+      }
+      for (let i = 7; i < 14; i++) {
+        console.assert(timeWizard.getDescription(i) === '1 week',
+                       {msg: 'getDescription() failed.'});
+        console.assert(timeWizard.getDescription(-i) === '1 week',
+                       {msg: 'getDescription() failed.'});
+      }
+      for (let i = 14; i < 30; i++) {
+        console.assert(timeWizard.getDescription(i) === Math.floor(i / 7) + ' weeks',
+                       {msg: 'getDescription() failed.'});
+        console.assert(timeWizard.getDescription(-i) === Math.floor(i / 7) + ' weeks',
+                       {msg: 'getDescription() failed.'});
+      }
+      for (let i = 30; i < 60; i++) {
+        console.assert(timeWizard.getDescription(i) === '1 month',
+                       {msg: 'getDescription() failed.'});
+        console.assert(timeWizard.getDescription(-i) === '1 month',
+                       {msg: 'getDescription() failed.'});
+      }
+      for (let i = 60; i < 365; i++) {
+        console.assert(timeWizard.getDescription(i) === Math.floor(i / 30) + ' months',
+                       {msg: 'getDescription() failed.'});
+        console.assert(timeWizard.getDescription(-i) === Math.floor(i / 30) + ' months',
+                       {msg: 'getDescription() failed.'});
+      }
+      for (let i = 365; i < 730; i++) {
+        console.assert(timeWizard.getDescription(i) === '1 year',
+                       {msg: 'getDescription() failed.'});
+        console.assert(timeWizard.getDescription(-i) === '1 year',
+                       {msg: 'getDescription() failed.'});
+      }
+      for (let i = 730; i < 1000; i++) {
+        console.assert(timeWizard.getDescription(i) === Math.floor(i / 365) + ' years',
+                       {msg: 'getDescription() failed.'});
+        console.assert(timeWizard.getDescription(-i) === Math.floor(i / 365) + ' years',
+                       {msg: 'getDescription() failed.'});
+      }
+
       console.assert(timeWizard.getWeek(1970, 1).toISOString().substring(0, 10) === '1969-12-29',
                      {msg: 'getWeek() failed.'});
     },
