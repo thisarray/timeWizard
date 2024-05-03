@@ -35,6 +35,38 @@ const timeWizard = (function () {
     },
 
     /*
+     * Return a string description for the number of days in dayCount.
+     */
+    getDescription(dayCount) {
+      dayCount = Math.abs(dayCount);
+      if (dayCount < 1) {
+        return 'today';
+      }
+      if (dayCount < 2) {
+        return dayCount + ' day';
+      }
+      if (dayCount < 7) {
+        return dayCount + ' days';
+      }
+      if (dayCount < 14) {
+        return Math.floor(dayCount / 7) + ' week';
+      }
+      if (dayCount < 30) {
+        return Math.floor(dayCount / 7) + ' weeks';
+      }
+      if (dayCount < 60) {
+        return Math.floor(dayCount / 30) + ' month';
+      }
+      if (dayCount < 365) {
+        return Math.floor(dayCount / 30) + ' months';
+      }
+      if (dayCount < 730) {
+        return Math.floor(dayCount / 365) + ' year';
+      }
+      return Math.floor(dayCount / 365) + ' years';
+    },
+
+    /*
      * Return the Monday for week weekNumber in year.
      */
     getWeek(year, weekNumber) {
