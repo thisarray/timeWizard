@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date</title>
+  <script src="timeWizard.js"></script>
+  <style type="text/css" media="screen">
+body {
+  background-color: white;
+  color: black;
+}
+  </style>
+</head>
+
+<body>
+
+<main>
+
+<h1>Date</h1>
+
+<form id="dateForm" name="dateForm">
+<p><label>Date:
+<input type="date" id="inputDate" name="inputDate" autofocus required>
+</label>
+<button type="submit">Submit</button></p>
+
+<output id="dayCount" name="dayCount" for="dateForm"></output>
+</form>
+
+</main>
+
+<script>
+const FORM = document.querySelector('#dateForm');
+const OUTPUT = document.querySelector('#dayCount');
+FORM.addEventListener('submit', (event) => {
+  let inputDate = new Date(FORM.inputDate.value),
+      dayCount = timeWizard.getDaysApart(inputDate),
+      message;
+
+  if (dayCount < 0) {
+    message = Math.abs(dayCount) + ' days from now';
+  }
+  else {
+    message = Math.abs(dayCount) + ' days ago';
+  }
+
+  OUTPUT.textContent = message;
+
+  event.preventDefault();
+});
+</script>
+</body>
+
+</html>
