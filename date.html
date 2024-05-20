@@ -50,6 +50,10 @@ FORM.addEventListener('submit', (event) => {
 
   event.preventDefault();
 });
+
+window.addEventListener('load', (event) => {
+  FORM.inputDate.value = (new Date()).toISOString().substring(0, 10);
+});
 </script>
 </body>
 
